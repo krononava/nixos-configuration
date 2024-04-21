@@ -8,6 +8,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./tetrd-custom.nix
+    ./user.nix
   ];
 
   # Enable tetrd
@@ -119,21 +120,6 @@
 
   # Remove mouse acceleration
   services.xserver.libinput.mouse.accelProfile = "flat";
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.lenix = {
-    isNormalUser = true;
-    description = "lenix";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      vscode
-      obsidian
-      git
-      nixos-generators
-    ];
-  };
-
 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
